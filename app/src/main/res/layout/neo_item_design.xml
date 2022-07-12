@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:paddingLeft="8dp"
+    android:paddingTop="3dp"
+    android:paddingRight="8dp"
+    android:paddingBottom="3dp">
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/imgHolder"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:padding="3dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:neumorph_backgroundColor="@color/background"
+        app:neumorph_shadowColorDark="@color/shadow_dark"
+        app:neumorph_shadowColorLight="@color/shadow_light"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCircle"
+        app:neumorph_shapeType="flat">
+
+        <soup.neumorphism.NeumorphImageView
+            android:id="@+id/img"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" />
+    </soup.neumorphism.NeumorphCardView>
+
+    <TextView
+        android:id="@+id/item_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:text="TextView"
+        android:fontFamily="@font/yekanbakh"
+        android:textSize="16sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/imgHolder"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <soup.neumorphism.NeumorphImageButton
+        android:id="@+id/starBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="4dp"
+        android:contentDescription="@string/app_name"
+        android:padding="18dp"
+        android:src="@drawable/ic_baseline_star_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.533"
+        app:neumorph_backgroundColor="@color/background"
+        app:neumorph_shadowColorDark="@color/shadow_dark"
+        app:neumorph_shadowColorLight="@color/shadow_light"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard"
+        app:neumorph_shapeType="basin" />
+
+    <View
+        android:id="@+id/border"
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="@color/shadow_dark"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/imgHolder" />
+</androidx.constraintlayout.widget.ConstraintLayout>

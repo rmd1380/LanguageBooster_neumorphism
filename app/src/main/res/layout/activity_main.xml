@@ -1,0 +1,63 @@
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/main"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="32dp"
+        android:textSize="22sp"
+        android:text="@string/Dictionary"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <soup.neumorphism.NeumorphCardView
+        android:id="@+id/neumorphCardView"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:padding="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView"
+        app:neumorph_backgroundColor="@color/background"
+        app:neumorph_shadowColorDark="@color/shadow_dark"
+        app:neumorph_shadowColorLight="@color/shadow_light"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCard">
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/mainList"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="1.0"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </soup.neumorphism.NeumorphCardView>
+
+    <soup.neumorphism.NeumorphFloatingActionButton
+        android:id="@+id/fab"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:layout_marginBottom="16dp"
+        android:contentDescription="@string/app_name"
+        android:padding="28dp"
+        android:src="@drawable/ic_baseline_add_24"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:neumorph_backgroundColor="@color/background"
+        app:neumorph_shadowColorDark="@color/shadow_dark"
+        app:neumorph_shadowColorLight="@color/shadow_light"
+        app:neumorph_shadowElevation="5dp"
+        app:neumorph_shapeAppearance="@style/NeumorphismCircle" />
+</androidx.constraintlayout.widget.ConstraintLayout>
