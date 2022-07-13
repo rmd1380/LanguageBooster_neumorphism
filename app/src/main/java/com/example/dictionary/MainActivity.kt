@@ -41,6 +41,9 @@ class MainActivity : AppCompatActivity() {
         Mock.addWord(Word("English", "انگلیسی", false))
         Mock.addWord(Word("Mobile", "گوشی همراه", true))
         Mock.addWord(Word("Sentence", "جمله", false))
+        Mock.addWord(Word("clean", "تمیز، شفاف", false))
+        Mock.addWord(Word("prepare", "آماده", false))
+        Mock.addWord(Word("resource", "منابع", false))
         adapter.notifyDataSetChanged()
     }
 }
