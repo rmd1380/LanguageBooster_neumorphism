@@ -20,6 +20,7 @@ class RecyclerAdapter(private val context: Context, private val words: ArrayList
             LayoutInflater.from(parent.context).inflate(R.layout.neo_item_design, parent, false)
         return WordHolder(view)
     }
+
     override fun onBindViewHolder(holder: WordHolder, position: Int) {
         val item = words[position]
         holder.keyword.text = "${item.keyword}:${item.meaning}"
@@ -31,8 +32,15 @@ class RecyclerAdapter(private val context: Context, private val words: ArrayList
             item.stared = !item.stared
             changeStar(holder, item)
         }
+        Glide
+            .with(context)
+            .load("https://picsum.photos/70?rand=" + System.currentTimeMillis())
+            .centerCrop()
+            .placeholder(R.drawable.loading_spinner)
+            .into(holder.img)
 
     }
+
     private fun changeStar(holder: WordHolder, item: Word) {
         holder.star.setImageResource(
             if (item.stared) {
@@ -41,18 +49,13 @@ class RecyclerAdapter(private val context: Context, private val words: ArrayList
                 R.drawable.ic_baseline_star_border_24
             }
         )
-
-        Glide
-            .with(context)
-            .load("https://picsum.photos/70?rand="+System.currentTimeMillis())
-            .centerCrop()
-            .placeholder(R.drawable.loading_spinner)
-            .into(holder.img)
     }
+
 
     override fun getItemCount(): Int {
         return words.size
     }
+
     class WordHolder(v: View) : RecyclerView.ViewHolder(v) {
         var keyword: TextView = v.findViewById(R.id.item_text)
         var star: NeumorphImageButton = v.findViewById(R.id.starBtn)
