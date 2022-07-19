@@ -1,6 +1,6 @@
-package com.example.dictionary.Mockdata
+package com.example.languagebooster.mockdata
 
-import com.example.dictionary.model.Word
+import com.example.languagebooster.model.Word
 
 object Mock {
 

@@ -1,4 +1,4 @@
-package com.example.dictionary
+package com.example.languagebooster
 
 import androidx.test.platform.app.InstrumentationRegistry
 import androidx.test.ext.junit.runners.AndroidJUnit4

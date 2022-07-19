@@ -1,4 +1,4 @@
-package com.example.dictionary.model
+package com.example.languagebooster.model
 
 
 data class Word(

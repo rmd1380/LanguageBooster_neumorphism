@@ -1,12 +1,12 @@
-package com.example.dictionary
+package com.example.languagebooster
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
-import com.example.dictionary.Adapter.RecyclerAdapter
-import com.example.dictionary.Mockdata.Mock
-import com.example.dictionary.model.Word
+import com.example.languagebooster.adapter.RecyclerAdapter
+import com.example.languagebooster.mockdata.Mock
+import com.example.languagebooster.model.Word
 import soup.neumorphism.NeumorphFloatingActionButton
 
 class MainActivity : AppCompatActivity() {
