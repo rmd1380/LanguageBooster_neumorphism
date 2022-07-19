@@ -1,2 +1,2 @@
-rootProject.name = "Dictionary"
+rootProject.name = "LanguageBooster"
 include ':app'
