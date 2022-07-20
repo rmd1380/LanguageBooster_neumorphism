@@ -8,11 +8,12 @@ import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.bumptech.glide.Glide
 import com.example.languagebooster.R
+import com.example.languagebooster.db.helper.DBHelper
 import com.example.languagebooster.model.Word
 import soup.neumorphism.NeumorphImageButton
 import soup.neumorphism.NeumorphImageView
 
-class RecyclerAdapter(private val context: Context, private val words: ArrayList<Word>) :
+class RecyclerAdapter(private val context: Context, private val words: ArrayList<Word>,private val wordDBHelper: DBHelper) :
     RecyclerView.Adapter<RecyclerAdapter.WordHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): WordHolder {
@@ -30,6 +31,7 @@ class RecyclerAdapter(private val context: Context, private val words: ArrayList
         }
         holder.star.setOnClickListener {
             item.stared = !item.stared
+            wordDBHelper.UpdateWord(item)
             changeStar(holder, item)
         }
         Glide
