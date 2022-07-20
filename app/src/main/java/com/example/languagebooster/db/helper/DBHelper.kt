@@ -42,7 +42,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, dataBaseName, null,
             val values=ContentValues()
             values.put(DBContract.WordEntity.KEYWORD_COLUMN,word.keyword)
             values.put(DBContract.WordEntity.MEANING_COLUMN,word.meaning)
-            values.put(DBContract.WordEntity.STARED_COLUMN,word.stared)
+            values.put(DBContract.WordEntity.STARED_COLUMN,if(word.stared) 1 else 0)
             db.insert(DBContract.WordEntity.TABLE_NAME,null,values)
             true
         }catch (e:Exception)
@@ -64,7 +64,7 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, dataBaseName, null,
         }
         var keyword: String
         var meaning: String
-        var stared: Int
+        var stared: Boolean
         if (cursor.moveToFirst()) {
             while (!cursor.isAfterLast) {
                 keyword =
@@ -72,11 +72,29 @@ class DBHelper(context: Context) : SQLiteOpenHelper(context, dataBaseName, null,
                 meaning =
                     cursor.getString(cursor.getColumnIndex(DBContract.WordEntity.MEANING_COLUMN))
                 stared =
-                    cursor.getInt(cursor.getColumnIndex(DBContract.WordEntity.STARED_COLUMN))
+                    cursor.getInt(cursor.getColumnIndex(DBContract.WordEntity.STARED_COLUMN))==1
                 words.add(Word(keyword, meaning, stared))
                 cursor.moveToNext()
             }
         }
         return words
+    }
+
+    fun UpdateWord(word: Word):Boolean
+    {
+        return try {
+            val db=writableDatabase
+            val values=ContentValues()
+            values.put(DBContract.WordEntity.KEYWORD_COLUMN,word.keyword)
+            values.put(DBContract.WordEntity.MEANING_COLUMN,word.meaning)
+            values.put(DBContract.WordEntity.STARED_COLUMN,if(word.stared) 1 else 0)
+            val where="${DBContract.WordEntity.KEYWORD_COLUMN}=?"
+            val args= arrayOf(word.keyword)
+            db.update(DBContract.WordEntity.TABLE_NAME,values,where,args)
+            true
+        }catch (e:Exception)
+        {
+            false
+        }
     }
 }

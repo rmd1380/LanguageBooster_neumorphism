@@ -27,5 +27,6 @@
     <style name="NeumorphismCircle">
         <item name="neumorph_cornerFamily">rounded</item>
         <item name="neumorph_cornerSize">50dp</item>
+
     </style>
 </resources>
