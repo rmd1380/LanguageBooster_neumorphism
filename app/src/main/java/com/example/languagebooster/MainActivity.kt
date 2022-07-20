@@ -5,7 +5,7 @@ import android.os.Bundle
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.example.languagebooster.adapter.RecyclerAdapter
-import com.example.languagebooster.mockdata.Mock
+import com.example.languagebooster.db.helper.DBHelper
 import com.example.languagebooster.model.Word
 import soup.neumorphism.NeumorphFloatingActionButton
 
@@ -13,6 +13,7 @@ class MainActivity : AppCompatActivity() {
     private lateinit var recyclerView: RecyclerView
     private lateinit var fab: NeumorphFloatingActionButton
     private lateinit var adapter: RecyclerAdapter
+    private lateinit var wordDBHelper: DBHelper
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -21,29 +22,15 @@ class MainActivity : AppCompatActivity() {
 
     private fun init() {
         bindViews()
-        adapter = RecyclerAdapter(this, Mock.getWord())
+        wordDBHelper = DBHelper(this)
+        adapter = RecyclerAdapter(this, wordDBHelper.getAllWords())
         val layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager = layoutManager
         recyclerView.adapter = adapter
-        prepareItems()
-
     }
 
     private fun bindViews() {
         recyclerView = findViewById(R.id.mainList)
         fab = findViewById(R.id.fab)
-    }
-
-    private fun prepareItems() {
-        Mock.getWord().clear()
-        Mock.addWord(Word("Word", "کلمه", false))
-        Mock.addWord(Word("Main", "اصلی", true))
-        Mock.addWord(Word("English", "انگلیسی", false))
-        Mock.addWord(Word("Mobile", "گوشی همراه", true))
-        Mock.addWord(Word("Sentence", "جمله", false))
-        Mock.addWord(Word("clean", "تمیز، شفاف", false))
-        Mock.addWord(Word("prepare", "آماده", false))
-        Mock.addWord(Word("resource", "منابع", false))
-        adapter.notifyDataSetChanged()
     }
 }
